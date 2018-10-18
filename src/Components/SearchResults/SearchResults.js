@@ -1,5 +1,6 @@
 import React from 'react';
 import { TrackList } from '../TrackList/TrackList';
+import PropType from 'prop-types';
 import './SearchResults.css';
 
 
@@ -8,8 +9,17 @@ export class SearchResults extends React.Component {
 		return (
 			<div className="SearchResults">
 				<h2>Results</h2>
-				<TrackList />
+				<TrackList tracks={this.props.searchResults}/>
 			</div>
 		);
 	}
 }
+
+SearchResults.propTypes = {
+	searchResults: PropType.arrayOf(PropType.shape({
+		name: PropType.string.isRequired,
+		artist: PropType.string.isRequired,
+		album: PropType.string.isRequired,
+		id: PropType.number.isRequired
+	})).isRequired
+};
