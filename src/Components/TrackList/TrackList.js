@@ -8,7 +8,12 @@ export class TrackList extends React.Component {
 	render () {
 		return (
 			<div className="TrackList">
-				{this.props.tracks.map(track => <Track key={track.id} track={track} isRemoval={true} />)}
+				{this.props.tracks.map(track => <Track
+					key={track.id}
+					track={track}
+					isRemoval={this.props.isRemoval}
+					onAdd={this.props.onAdd}/>
+				)}
 			</div>
 		);
 	}
@@ -20,5 +25,7 @@ TrackList.propTypes = {
 		artist: PropType.string.isRequired,
 		album: PropType.string.isRequired,
 		id: PropType.number.isRequired
-	})).isRequired
+	})).isRequired,
+	onAdd: PropType.func,
+	isRemoval: PropType.bool
 };

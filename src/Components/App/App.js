@@ -23,8 +23,38 @@ class App extends Component {
           album: 'Album2',
           id: 2
         }
+      ],
+      playlistName: 'My Playlist',
+      playlistTracks: [
+        {
+          name: 'Play1',
+          artist: 'Artist1',
+          album: 'Album1',
+          id: 3
+        },
+        {
+          name: 'Play2',
+          artist: 'Artist2',
+          album: 'Album2',
+          id: 4
+        }
       ]
     };
+
+    this.addTrack = this.addTrack.bind(this);
+  }
+
+  addTrack (track) {
+    if (this.state.playlistTracks.find(savedTrack => savedTrack.id === track.id)) {
+      return;
+    }
+
+    this.setState(prevState => {
+      return { playlistTracks: [
+        ...prevState.playlistTracks,
+        track
+      ] };
+    });
   }
 
   render() {
@@ -34,8 +64,8 @@ class App extends Component {
         <div className="App">
           <SearchBar />
           <div className="App-playlist">
-            <SearchResults searchResults={this.state.searchResults}/>
-            <Playlist />
+            <SearchResults searchResults={this.state.searchResults} onAdd={this.addTrack}/>
+            <Playlist playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks}/>
           </div>
         </div>
       </div>

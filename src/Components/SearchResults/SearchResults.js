@@ -9,7 +9,7 @@ export class SearchResults extends React.Component {
 		return (
 			<div className="SearchResults">
 				<h2>Results</h2>
-				<TrackList tracks={this.props.searchResults}/>
+				<TrackList tracks={this.props.searchResults} onAdd={this.props.onAdd} isRemoval={false}/>
 			</div>
 		);
 	}
@@ -21,5 +21,6 @@ SearchResults.propTypes = {
 		artist: PropType.string.isRequired,
 		album: PropType.string.isRequired,
 		id: PropType.number.isRequired
-	})).isRequired
+	})).isRequired,
+	onAdd: PropType.func.isRequired
 };
