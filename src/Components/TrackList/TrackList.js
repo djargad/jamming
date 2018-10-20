@@ -12,7 +12,8 @@ export class TrackList extends React.Component {
 					key={track.id}
 					track={track}
 					isRemoval={this.props.isRemoval}
-					onAdd={this.props.onAdd}/>
+					onAdd={this.props.onAdd}
+					onRemove={this.props.onRemove}/>
 				)}
 			</div>
 		);
@@ -27,5 +28,6 @@ TrackList.propTypes = {
 		id: PropType.number.isRequired
 	})).isRequired,
 	onAdd: PropType.func,
+	onRemove: PropType.func,
 	isRemoval: PropType.bool
 };

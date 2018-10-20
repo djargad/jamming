@@ -9,7 +9,10 @@ export class Playlist extends React.Component {
 		return (
 			<div className="Playlist">
 				<input defaultValue={this.props.playlistName}/>
-				<TrackList tracks={this.props.playlistTracks}/>
+				<TrackList
+					tracks={this.props.playlistTracks}
+					onRemove={this.props.onRemove}
+					isRemoval={true}/>
 				<a className="Playlist-save">SAVE TO SPOTIFY</a>
 			</div>
 		);
@@ -23,5 +26,6 @@ Playlist.propTypes = {
 		artist: PropType.string.isRequired,
 		album: PropType.string.isRequired,
 		id: PropType.number.isRequired
-	})).isRequired
+	})).isRequired,
+	onRemove: PropType.func
 };
