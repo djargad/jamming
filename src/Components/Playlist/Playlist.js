@@ -5,10 +5,22 @@ import './Playlist.css';
 
 
 export class Playlist extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.handleNameChange = this.handleNameChange.bind(this);
+	}
+
+	handleNameChange(ev) {
+		this.props.onNameChange(ev.target.value);
+	}
+
 	render () {
 		return (
 			<div className="Playlist">
-				<input defaultValue={this.props.playlistName}/>
+				<input
+					defaultValue={this.props.playlistName}
+					onChange={this.handleNameChange}/>
 				<TrackList
 					tracks={this.props.playlistTracks}
 					onRemove={this.props.onRemove}
@@ -27,5 +39,6 @@ Playlist.propTypes = {
 		album: PropType.string.isRequired,
 		id: PropType.number.isRequired
 	})).isRequired,
-	onRemove: PropType.func
+	onRemove: PropType.func.isRequired,
+	onNameChange: PropType.func.isRequired
 };
