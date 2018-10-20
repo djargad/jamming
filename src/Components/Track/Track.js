@@ -41,7 +41,7 @@ Track.propTypes = {
 		name: PropType.string.isRequired,
 		artist: PropType.string.isRequired,
 		album: PropType.string.isRequired,
-		id: PropType.number.isRequired
+		id: PropType.string.isRequired
 	}),
 	onAdd: PropType.func,
 	onRemove: PropType.func
