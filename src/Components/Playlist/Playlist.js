@@ -25,7 +25,7 @@ export class Playlist extends React.Component {
 					tracks={this.props.playlistTracks}
 					onRemove={this.props.onRemove}
 					isRemoval={true}/>
-				<a className="Playlist-save">SAVE TO SPOTIFY</a>
+				<a className="Playlist-save" onClick={this.props.onSave}>SAVE TO SPOTIFY</a>
 			</div>
 		);
 	}
@@ -40,5 +40,6 @@ Playlist.propTypes = {
 		id: PropType.string.isRequired
 	})).isRequired,
 	onRemove: PropType.func.isRequired,
-	onNameChange: PropType.func.isRequired
+	onNameChange: PropType.func.isRequired,
+	onSave: PropType.func.isRequired
 };

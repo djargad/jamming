@@ -15,13 +15,13 @@ class App extends Component {
           name: 'Name1',
           artist: 'Artist1',
           album: 'Album1',
-          id: 1
+          id: '1'
         },
         {
           name: 'Name2',
           artist: 'Artist2',
           album: 'Album2',
-          id: 2
+          id: '2'
         }
       ],
       playlistName: 'My Playlist',
@@ -30,13 +30,13 @@ class App extends Component {
           name: 'Play1',
           artist: 'Artist1',
           album: 'Album1',
-          id: 3
+          id: '3'
         },
         {
           name: 'Play2',
           artist: 'Artist2',
           album: 'Album2',
-          id: 4
+          id: '4'
         }
       ]
     };
@@ -44,6 +44,7 @@ class App extends Component {
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
     this.updatePlaylistName = this.updatePlaylistName.bind(this);
+    this.savePlaylist = this.savePlaylist.bind(this);
   }
 
   addTrack (track) {
@@ -69,6 +70,10 @@ class App extends Component {
     this.setState({ playlistName: name });
   }
 
+  savePlaylist() {
+    const uri = this.state.playlistTracks.map(track => `spotify:track:${track.id}`);
+  }
+
   render() {
     return (
       <div>
@@ -83,7 +88,8 @@ class App extends Component {
               playlistName={this.state.playlistName}
               playlistTracks={this.state.playlistTracks}
               onRemove={this.removeTrack}
-              onNameChange={this.updatePlaylistName}/>
+              onNameChange={this.updatePlaylistName}
+              onSave={this.savePlaylist}/>
           </div>
         </div>
       </div>
