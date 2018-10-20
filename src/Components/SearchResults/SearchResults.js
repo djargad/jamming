@@ -20,7 +20,7 @@ SearchResults.propTypes = {
 		name: PropType.string.isRequired,
 		artist: PropType.string.isRequired,
 		album: PropType.string.isRequired,
-		id: PropType.number.isRequired
+		id: PropType.string.isRequired
 	})).isRequired,
 	onAdd: PropType.func.isRequired
 };
