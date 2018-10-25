@@ -13,20 +13,7 @@ class App extends Component {
     this.state = {
       searchResults: [],
       playlistName: 'My Playlist',
-      playlistTracks: [
-        {
-          name: 'Play1',
-          artist: 'Artist1',
-          album: 'Album1',
-          id: '3'
-        },
-        {
-          name: 'Play2',
-          artist: 'Artist2',
-          album: 'Album2',
-          id: '4'
-        }
-      ]
+      playlistTracks: []
     };
 
     this.addTrack = this.addTrack.bind(this);
@@ -60,7 +47,13 @@ class App extends Component {
   }
 
   savePlaylist() {
-    const uri = this.state.playlistTracks.map(track => `spotify:track:${track.id}`);
+    const uris = this.state.playlistTracks.map(track => track.uri);
+    Spotify.savePlaylist(this.state.playlistName, uris).then(() => {
+      this.setState({
+        playlistName: 'New Playlist',
+        playlistTracks: []
+      });
+    });
   }
 
   search(term) {
